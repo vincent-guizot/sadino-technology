@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Code,
@@ -31,6 +31,7 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-400 text-white">
       <div className="container-custom py-20 grid md:grid-cols-2 gap-10 items-center">
+        {/* LEFT */}
         <div>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -63,18 +64,25 @@ function Hero() {
           </div>
         </div>
 
+        {/* RIGHT IMAGE */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="bg-white/10 rounded-3xl p-10 text-center"
+          className="flex justify-center"
         >
-          <h2 className="text-2xl font-bold">SADINO TECHNOLOGY</h2>
+          <Image
+            src="/images/hero_laptop.png"
+            alt="Sadino Laptop"
+            width={500}
+            height={500}
+            className="w-full max-w-md drop-shadow-2xl"
+            priority
+          />
         </motion.div>
       </div>
     </section>
   );
 }
-
 /* ================= SERVICES ================= */
 function Services() {
   return (
