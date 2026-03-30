@@ -20,7 +20,7 @@ body {
 
 /* CARD */
 .card {
-  @apply bg-white rounded-2xl shadow-md p-6 transition hover:shadow-xl;
+  @apply bg-white rounded-2xl shadow-md p-6 transition hover:shadow-md;
 }
 
 /* TYPOGRAPHY */
