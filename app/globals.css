@@ -1,76 +1,55 @@
 @import "tailwindcss";
 
-/* =========================
-   🌐 BASE
-========================= */
+/* BASE */
 body {
-  @apply bg-white text-gray-900 antialiased;
+  @apply bg-white text-gray-900 antialiased font-[Poppins];
 }
 
-/* =========================
-   🧱 CONTAINER
-========================= */
+/* CONTAINER */
 .container-custom {
   @apply max-w-7xl mx-auto px-6;
 }
 
-/* =========================
-   🔘 BUTTONS
-========================= */
+/* BUTTON */
 .btn-primary {
   @apply bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition hover:bg-blue-700;
 }
-
 .btn-secondary {
   @apply border border-blue-600 text-blue-600 px-6 py-3 rounded-xl font-semibold transition hover:bg-blue-600 hover:text-white;
 }
 
-/* =========================
-   🧩 CARD
-========================= */
+/* CARD */
 .card {
   @apply bg-white rounded-2xl shadow-md p-6 transition hover:shadow-xl;
 }
 
-/* =========================
-   📝 TYPOGRAPHY
-========================= */
+/* TYPOGRAPHY */
 .heading-xl {
   @apply text-4xl md:text-5xl font-bold leading-tight;
 }
-
 .heading-lg {
   @apply text-3xl font-semibold;
 }
-
 .text-muted {
   @apply text-gray-500;
 }
 
-/* =========================
-   📦 SECTION
-========================= */
+/* SECTION */
 .section {
   @apply py-16;
 }
 
-/* =========================
-   ✨ GRADIENT
-========================= */
+/* GRADIENT */
 .bg-primary-gradient {
   @apply bg-gradient-to-r from-blue-600 to-blue-400 text-white;
 }
 
-/* =========================
-   🧭 NAVBAR
-========================= */
+/* NAV */
 .nav-link {
   @apply text-gray-700 hover:text-blue-600 transition font-medium;
 }
 
-/* =========================
-   ⚡ UTILITIES
-========================= */
+/* UTIL */
 .center {
   @apply flex items-center justify-center;
 }
