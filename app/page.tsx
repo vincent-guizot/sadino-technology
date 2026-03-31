@@ -20,6 +20,17 @@ import {
 
 import { services, portfolios, process } from "@/constants/data";
 
+/* ================= ANIMATION ================= */
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12 } },
+};
+
 /* ================= ICON MAP ================= */
 const iconMap: any = {
   Code: <Code size={28} />,
@@ -51,31 +62,33 @@ export default function HomePage() {
 /* ================= HERO ================= */
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-400 text-white">
-      <div className="container-custom py-20 grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+    <section className="hero">
+      <div className="hero-container">
+        <motion.div initial="hidden" animate="show" variants={stagger}>
+          <motion.h1 variants={fadeUp} className="heading-xl mb-6">
             Build Your Digital Product with{" "}
             <span className="text-yellow-300">Sadino Technology</span>
-          </h1>
+          </motion.h1>
 
-          <p className="mb-6 text-blue-100">
+          <motion.p variants={fadeUp} className="mb-6 text-blue-100">
             We help businesses grow with modern web development, UI/UX design,
             and scalable backend solutions.
-          </p>
+          </motion.p>
 
-          <div className="flex gap-4 mb-6">
+          <motion.div variants={fadeUp} className="flex gap-4">
             <button className="bg-white text-blue-600 px-6 py-3 rounded-xl font-semibold">
               Get Free Consultation
             </button>
-
             <button className="border border-white px-6 py-3 rounded-xl">
               View Our Services
             </button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="flex justify-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+        >
           <Image
             src="/images/hero_laptop.png"
             alt="Sadino"
@@ -83,7 +96,7 @@ function Hero() {
             height={500}
             className="w-full max-w-md"
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -92,30 +105,39 @@ function Hero() {
 /* ================= SERVICES ================= */
 function Services() {
   return (
-    <section className="section bg-gray-50">
-      <div className="container-custom text-center mb-12">
-        <span className="inline-block text-xs font-semibold bg-blue-100 text-blue-600 px-4 py-1 rounded-full mb-4">
-          OUR SERVICES
-        </span>
-
+    <section className="services-section">
+      <motion.div
+        className="container-custom text-center mb-12"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={fadeUp}
+      >
+        <span className="badge">OUR SERVICES</span>
         <h2 className="heading-lg mb-2">What We Can Build for You</h2>
-
         <p className="text-muted max-w-xl mx-auto">
           End-to-end digital solutions tailored to your business needs.
         </p>
-      </div>
+      </motion.div>
 
-      <div className="container-custom grid md:grid-cols-5 gap-4">
+      <motion.div
+        className="services-grid"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={stagger}
+      >
         {services.map((item) => (
-          <ServiceCard
-            key={item.id}
-            icon={iconMap[item.icon]}
-            title={item.name}
-            desc={item.description}
-            href={`/services/${item.slug}`}
-          />
+          <motion.div key={item.id} variants={fadeUp}>
+            <ServiceCard
+              icon={iconMap[item.icon]}
+              title={item.name}
+              desc={item.description}
+              href={`/services/${item.slug}`}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -123,37 +145,38 @@ function Services() {
 /* ================= WHY ================= */
 function Why() {
   return (
-    <section className="section bg-blue-50">
-      <div className="container-custom text-center mb-12">
-        <span className="inline-block text-xs font-semibold bg-blue-100 text-blue-600 px-4 py-1 rounded-full mb-4">
-          WHY CHOOSE SADINO?
-        </span>
-
+    <section className="why-section">
+      <motion.div
+        className="container-custom text-center mb-12"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={fadeUp}
+      >
+        <span className="badge">WHY CHOOSE SADINO?</span>
         <h2 className="heading-lg">Why Clients Trust Us</h2>
-      </div>
+      </motion.div>
 
-      <div className="container-custom grid md:grid-cols-4 gap-8 text-center">
+      <motion.div
+        className="why-grid"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={stagger}
+      >
         <WhyCard
           icon={<Zap />}
           title="Fast Development"
-          desc="On-time delivery with agile process"
+          desc="On-time delivery"
         />
         <WhyCard
           icon={<Code />}
           title="Clean Code"
-          desc="Maintainable & scalable architecture"
+          desc="Maintainable system"
         />
-        <WhyCard
-          icon={<Layers />}
-          title="Scalable System"
-          desc="Built for future growth"
-        />
-        <WhyCard
-          icon={<DollarSign />}
-          title="Affordable Solution"
-          desc="High quality at fair price"
-        />
-      </div>
+        <WhyCard icon={<Layers />} title="Scalable" desc="Built for growth" />
+        <WhyCard icon={<DollarSign />} title="Affordable" desc="Best value" />
+      </motion.div>
     </section>
   );
 }
@@ -161,36 +184,30 @@ function Why() {
 /* ================= PORTFOLIO ================= */
 function Portfolio() {
   return (
-    <section className="section bg-gray-50">
-      <div className="container-custom flex flex-col md:flex-row md:items-center md:justify-between mb-10">
-        {/* LEFT */}
+    <section className="portfolio-section">
+      <div className="container-custom flex justify-between mb-10">
         <div>
-          <span className="inline-block text-xs font-semibold bg-blue-100 text-blue-600 px-4 py-1 rounded-full mb-3">
-            OUR PROJECTS
-          </span>
-
-          <h2 className="heading-lg mb-1">Featured Projects</h2>
-
-          <p className="text-muted text-sm">
-            Some of the amazing products we’ve built.
-          </p>
+          <span className="badge">OUR PROJECTS</span>
+          <h2 className="heading-lg">Featured Projects</h2>
         </div>
-
-        {/* RIGHT */}
-        <Link href="/portfolio" className="mt-4 md:mt-0 btn-secondary">
-          View All Projects →
+        <Link href="/portfolio" className="btn-secondary">
+          View All →
         </Link>
       </div>
 
-      {/* GRID */}
-      <div className="container-custom grid md:grid-cols-3 gap-6">
-        {portfolios
-          .filter((item) => item.featured)
-          .slice(0, 3)
-          .map((item) => (
-            <PortfolioCard key={item.id} item={item} />
-          ))}
-      </div>
+      <motion.div
+        className="portfolio-grid"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={stagger}
+      >
+        {portfolios.slice(0, 3).map((item) => (
+          <motion.div key={item.id} variants={fadeUp}>
+            <PortfolioCard item={item} />
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   );
 }
@@ -198,36 +215,33 @@ function Portfolio() {
 /* ================= PROCESS ================= */
 function Process() {
   return (
-    <section className="section bg-blue-50">
-      <div className="container-custom text-center mb-16">
-        {/* LABEL */}
-        <span className="inline-block text-xs font-semibold bg-blue-100 text-blue-600 px-4 py-1 rounded-full mb-4">
-          OUR PROCESS
-        </span>
-
-        {/* TITLE */}
-        <h2 className="heading-lg mb-2">How We Work</h2>
-
-        <p className="text-muted">Simple steps to bring your idea to life.</p>
+    <section className="process-section">
+      <div className="container-custom text-center mb-12">
+        <span className="badge">OUR PROCESS</span>
+        <h2 className="heading-lg">How We Work</h2>
       </div>
 
-      {/* TIMELINE */}
       <div className="container-custom relative">
-        {/* LINE */}
-        <div className="hidden md:block absolute top-6 left-0 right-0 h-[2px] bg-blue-200"></div>
+        <div className="process-line" />
 
-        {/* ITEMS */}
-        <div className="grid md:grid-cols-4 gap-8 text-center relative">
+        <motion.div
+          className="process-grid"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={stagger}
+        >
           {process.map((item) => (
-            <ProcessStep
-              key={item.id}
-              icon={iconMap[item.icon]}
-              title={item.title}
-              desc={item.description}
-              step={item.step}
-            />
+            <motion.div key={item.id} variants={fadeUp}>
+              <ProcessStep
+                icon={iconMap[item.icon]}
+                title={item.title}
+                desc={item.description}
+                step={item.step}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -236,13 +250,15 @@ function Process() {
 /* ================= CTA ================= */
 function CTA() {
   return (
-    <section className="bg-primary-gradient py-16 text-center">
+    <motion.section
+      className="cta-section"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
       <h2 className="text-3xl font-bold mb-4">Have a Project in Mind?</h2>
-      <p className="mb-6">Let’s build something great together</p>
-      <button className="bg-white text-blue-600 px-6 py-3 rounded-xl font-semibold">
-        Contact Us Today
-      </button>
-    </section>
+      <button className="btn-primary">Contact Us</button>
+    </motion.section>
   );
 }
 
@@ -251,17 +267,10 @@ function CTA() {
 function ServiceCard({ icon, title, desc, href }: any) {
   return (
     <motion.div whileHover={{ y: -6 }} className="card text-center group">
-      <div className="flex justify-center mb-5">
-        <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 text-white shadow-md group-hover:scale-110 transition">
-          {icon}
-        </div>
-      </div>
-
-      <h3 className="text-lg font-semibold mb-2">{title}</h3>
-
-      <p className="text-sm text-gray-500 mb-4">{desc}</p>
-
-      <Link href={href} className="text-blue-600 text-sm font-medium">
+      <div className="center mb-4 text-blue-600">{icon}</div>
+      <h3 className="font-semibold mb-2">{title}</h3>
+      <p className="text-sm text-gray-500 mb-3">{desc}</p>
+      <Link href={href} className="text-blue-600 text-sm">
         Learn More →
       </Link>
     </motion.div>
@@ -270,8 +279,8 @@ function ServiceCard({ icon, title, desc, href }: any) {
 
 function WhyCard({ icon, title, desc }: any) {
   return (
-    <div className="flex flex-col items-center text-center">
-      <div className="w-14 h-14 flex items-center justify-center rounded-full bg-blue-600 text-white mb-4">
+    <div className="center flex-col text-center">
+      <div className="w-14 h-14 bg-blue-600 text-white rounded-full center mb-3">
         {icon}
       </div>
       <h3 className="font-semibold">{title}</h3>
@@ -282,66 +291,29 @@ function WhyCard({ icon, title, desc }: any) {
 
 function PortfolioCard({ item }: any) {
   return (
-    <motion.div
-      whileHover={{ y: -6 }}
-      className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition overflow-hidden group"
-    >
-      {/* IMAGE */}
-      <div className="relative h-48 overflow-hidden">
-        <Image
-          src={item.image}
-          alt={item.name}
-          fill
-          className="object-cover group-hover:scale-105 transition duration-300"
-        />
-
-        {/* OVERLAY */}
-        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition" />
-      </div>
-
-      {/* CONTENT */}
-      <div className="p-5">
-        {/* TITLE */}
-        <h3 className="font-semibold text-lg mb-1">{item.name}</h3>
-
-        {/* DESC */}
-        <p className="text-sm text-gray-500 mb-3">{item.description}</p>
-
-        {/* TECH STACK */}
-        <div className="flex flex-wrap gap-2">
-          {item.techStack.map((tech: string, i: number) => (
-            <span
-              key={i}
-              className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-md"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
+    <motion.div whileHover={{ y: -6 }} className="card overflow-hidden">
+      <Image
+        src={item.image}
+        alt={item.name}
+        width={400}
+        height={200}
+        className="rounded-lg mb-4"
+      />
+      <h3 className="font-semibold">{item.name}</h3>
+      <p className="text-sm text-gray-500">{item.description}</p>
     </motion.div>
   );
 }
 
 function ProcessStep({ icon, title, desc, step }: any) {
   return (
-    <div className="flex flex-col items-center text-center relative">
-      {/* ICON */}
-      <div
-        className="w-14 h-14 flex items-center justify-center rounded-full 
-      bg-blue-600 text-white shadow-md mb-4 z-10"
-      >
+    <div className="center flex-col text-center">
+      <div className="w-12 h-12 bg-blue-600 text-white rounded-full center mb-2">
         {icon}
       </div>
-
-      {/* STEP */}
-      <p className="text-xs text-gray-400 mb-1">{step}.</p>
-
-      {/* TITLE */}
-      <h3 className="font-semibold text-base mb-1">{title}</h3>
-
-      {/* DESC */}
-      <p className="text-sm text-gray-500 max-w-[180px]">{desc}</p>
+      <p className="text-xs text-gray-400">{step}</p>
+      <h3 className="font-semibold">{title}</h3>
+      <p className="text-sm text-gray-500">{desc}</p>
     </div>
   );
 }

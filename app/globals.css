@@ -1,55 +1,128 @@
 @import "tailwindcss";
 
-/* BASE */
+/* ================= BASE ================= */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-white text-gray-900 antialiased font-[Poppins];
 }
 
-/* CONTAINER */
+/* ================= CONTAINER ================= */
 .container-custom {
   @apply max-w-7xl mx-auto px-6;
 }
 
-/* BUTTON */
+/* ================= BUTTON ================= */
 .btn-primary {
-  @apply bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition hover:bg-blue-700;
+  @apply bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition duration-300 hover:bg-blue-700 hover:scale-[1.02];
 }
+
 .btn-secondary {
-  @apply border border-blue-600 text-blue-600 px-6 py-3 rounded-xl font-semibold transition hover:bg-blue-600 hover:text-white;
+  @apply border border-blue-600 text-blue-600 px-6 py-3 rounded-xl font-semibold transition duration-300 hover:bg-blue-600 hover:text-white hover:scale-[1.02];
 }
 
-/* CARD */
+/* ================= CARD ================= */
 .card {
-  @apply bg-white rounded-2xl shadow-md p-6 transition hover:shadow-md;
+  @apply bg-white rounded-2xl shadow-md p-6 transition duration-300 hover:shadow-lg hover:-translate-y-1;
 }
 
-/* TYPOGRAPHY */
+/* ================= TYPOGRAPHY ================= */
 .heading-xl {
   @apply text-4xl md:text-5xl font-bold leading-tight;
 }
+
 .heading-lg {
   @apply text-3xl font-semibold;
 }
+
 .text-muted {
   @apply text-gray-500;
 }
 
-/* SECTION */
+/* ================= SECTION ================= */
 .section {
   @apply py-16;
 }
 
-/* GRADIENT */
-.bg-primary-gradient {
-  @apply bg-gradient-to-r from-blue-600 to-blue-400 text-white;
-}
-
-/* NAV */
+/* ================= NAV ================= */
 .nav-link {
-  @apply text-gray-700 hover:text-blue-600 transition font-medium;
+  @apply text-gray-700 transition font-medium uppercase px-3 py-2 rounded-lg hover:bg-blue-50;
 }
 
-/* UTIL */
+/* ================= UTIL ================= */
 .center {
   @apply flex items-center justify-center;
+}
+
+/* ================= HERO ================= */
+.hero {
+  @apply relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-400 text-white;
+}
+
+.hero-container {
+  @apply max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center;
+}
+
+/* ================= SERVICES ================= */
+.services-section {
+  @apply py-16 bg-gray-50;
+}
+
+.services-grid {
+  @apply max-w-7xl mx-auto px-6 grid md:grid-cols-5 gap-4;
+}
+
+/* ================= WHY ================= */
+.why-section {
+  @apply py-16 bg-blue-50;
+}
+
+.why-grid {
+  @apply max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8 text-center;
+}
+
+/* ================= PORTFOLIO ================= */
+.portfolio-section {
+  @apply py-16 bg-gray-50;
+}
+
+.portfolio-grid {
+  @apply max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-6;
+}
+
+/* ================= PROCESS ================= */
+.process-section {
+  @apply py-16 bg-blue-50;
+}
+
+.process-grid {
+  @apply grid md:grid-cols-4 gap-8 text-center relative;
+}
+
+.process-line {
+  @apply hidden md:block absolute top-6 left-0 right-0 h-[2px] bg-blue-200;
+}
+
+/* ================= CTA ================= */
+.cta-section {
+  @apply bg-gradient-to-r from-blue-600 to-blue-400 text-white py-16 text-center;
+}
+
+/* ================= ANIMATION ================= */
+
+/* hover lift */
+.hover-lift {
+  @apply transition duration-300 hover:-translate-y-1 hover:shadow-lg;
+}
+
+/* hover zoom */
+.hover-zoom {
+  @apply transition duration-300 hover:scale-105;
+}
+
+/* subtle fade helper */
+.fade-up {
+  @apply opacity-0 translate-y-10;
 }

@@ -22,9 +22,10 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/images/logo.png"
-            alt="Sadino Logo"
+            alt="Sadino"
             width={120}
-            height={32}
+            height={40}
+            style={{ width: "auto", height: "auto" }}
           />
           {/* <span className="font-bold text-lg uppercase">sadino</span> */}
         </Link>
