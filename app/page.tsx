@@ -291,16 +291,46 @@ function WhyCard({ icon, title, desc }: any) {
 
 function PortfolioCard({ item }: any) {
   return (
-    <motion.div whileHover={{ y: -6 }} className="card overflow-hidden">
-      <Image
-        src={item.image}
-        alt={item.name}
-        width={400}
-        height={200}
-        className="rounded-lg mb-4"
-      />
-      <h3 className="font-semibold">{item.name}</h3>
-      <p className="text-sm text-gray-500">{item.description}</p>
+    <motion.div
+      whileHover={{ y: -6 }}
+      className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition overflow-hidden group"
+    >
+      {/* IMAGE */}
+      <div className="relative h-48 overflow-hidden">
+        <Image
+          src={item.image}
+          alt={item.name}
+          fill
+          className="object-cover group-hover:scale-105 transition duration-300"
+        />
+      </div>
+
+      {/* CONTENT */}
+      <div className="p-5">
+        <h3 className="font-semibold text-lg mb-1">{item.name}</h3>
+
+        <p className="text-sm text-gray-500 mb-3">{item.description}</p>
+
+        {/* TECH */}
+        <div className="flex flex-wrap gap-2 mb-3">
+          {item.techStack.map((tech: string, i: number) => (
+            <span
+              key={i}
+              className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-md"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        {/* LINK */}
+        <Link
+          href={`/portfolio/${item.slug}`}
+          className="text-blue-600 text-sm font-medium"
+        >
+          View Details →
+        </Link>
+      </div>
     </motion.div>
   );
 }

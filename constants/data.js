@@ -227,7 +227,7 @@ export const contacts = [
     phone: "082310001570",
     website: "http://www.sadinotech.com",
     instagram: "sadino.tech",
-    email: "hello@sadinotech.com",
+    email: "admin@sadinotech.com",
     location: "Indonesia",
     notes: "",
   },

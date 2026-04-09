@@ -14,18 +14,40 @@ body {
   @apply max-w-7xl mx-auto px-6;
 }
 
+/* ================= COLOR ================= */
+.bg-primary {
+  @apply bg-gradient-to-r from-blue-600 to-blue-400 text-white;
+}
+
+.text-primary {
+  @apply text-blue-600;
+}
+
+.bg-soft {
+  @apply bg-blue-50;
+}
+
 /* ================= BUTTON ================= */
 .btn-primary {
-  @apply bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition duration-300 hover:bg-blue-700 hover:scale-[1.02];
+  @apply bg-gradient-to-r from-blue-600 to-blue-400 
+         text-white px-6 py-3 rounded-xl font-semibold 
+         transition duration-300 
+         hover:opacity-90 hover:scale-[1.02];
 }
 
 .btn-secondary {
-  @apply border border-blue-600 text-blue-600 px-6 py-3 rounded-xl font-semibold transition duration-300 hover:bg-blue-600 hover:text-white hover:scale-[1.02];
+  @apply border border-blue-600 text-blue-600 
+         px-6 py-3 rounded-xl font-semibold 
+         transition duration-300 
+         hover:bg-blue-600 hover:text-white hover:scale-[1.02];
 }
 
 /* ================= CARD ================= */
 .card {
-  @apply bg-white rounded-2xl shadow-md p-6 transition duration-300 hover:shadow-lg hover:-translate-y-1;
+  @apply bg-white rounded-2xl p-6 
+         shadow-sm 
+         transition duration-300 
+         hover:shadow-lg hover:-translate-y-1;
 }
 
 /* ================= TYPOGRAPHY ================= */
@@ -48,7 +70,9 @@ body {
 
 /* ================= NAV ================= */
 .nav-link {
-  @apply text-gray-700 transition font-medium uppercase px-3 py-2 rounded-lg hover:bg-blue-50;
+  @apply text-gray-700 uppercase font-medium px-3 py-2 rounded-lg 
+         transition duration-200 
+         hover:bg-blue-50;
 }
 
 /* ================= UTIL ================= */
@@ -57,6 +81,7 @@ body {
 }
 
 /* ================= HERO ================= */
+/* ❌ JANGAN @apply container-custom */
 .hero {
   @apply relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-400 text-white;
 }
@@ -71,7 +96,7 @@ body {
 }
 
 .services-grid {
-  @apply max-w-7xl mx-auto px-6 grid md:grid-cols-5 gap-4;
+  @apply max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-6;
 }
 
 /* ================= WHY ================= */
@@ -111,18 +136,14 @@ body {
 }
 
 /* ================= ANIMATION ================= */
-
-/* hover lift */
 .hover-lift {
   @apply transition duration-300 hover:-translate-y-1 hover:shadow-lg;
 }
 
-/* hover zoom */
 .hover-zoom {
   @apply transition duration-300 hover:scale-105;
 }
 
-/* subtle fade helper */
-.fade-up {
-  @apply opacity-0 translate-y-10;
+.hover-glow {
+  @apply transition duration-300 hover:shadow-[0_10px_30px_rgba(59,130,246,0.3)];
 }
