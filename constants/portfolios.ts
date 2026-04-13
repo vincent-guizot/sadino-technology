@@ -6,7 +6,7 @@ export const portfolios = [
       category: "Fintech",
       description:
          "A complete digital transformation for a leading financial institution.",
-      image: "https://placehold.co/1200x700/png",
+      image: "https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1200",
 
       hero: {
          badge: ["Case Study", "Fintech"],
@@ -73,7 +73,7 @@ export const portfolios = [
       title: "Vanguard Analytics Engine",
       category: "Dashboard",
       description: "Real-time financial analytics with AI fraud detection.",
-      image: "https://placehold.co/1200x700/png",
+      image: "https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1200",
 
       hero: {
          badge: ["Dashboard", "AI"],
@@ -143,7 +143,7 @@ export const portfolios = [
          .replace(/\b\w/g, (c) => c.toUpperCase()),
       category: slug.category,
       description: "Modern scalable digital platform. With robust and precise architecture.",
-      image: "https://placehold.co/1200x700/png",
+      image: "https://source.unsplash.com/1200x800/?ai,abstract,technology",
 
       hero: {
          badge: ["Case Study"],

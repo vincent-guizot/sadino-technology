@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeUp, stagger } from "@/lib/animations";
 
 const services = [
   {
@@ -31,24 +35,48 @@ export default function Services() {
   return (
     <section className="py-24 bg-white">
       <div className="container-custom">
-        {/* 🔷 HEADER */}
-        <div className="mb-16">
+        {/* ================= HEADER ================= */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="mb-16"
+        >
           <h2 className="text-4xl font-bold mb-4 text-gray-900">
             Core Expertise
           </h2>
           <div className="w-20 h-1.5 bg-blue-600 rounded-full" />
-        </div>
+        </motion.div>
 
-        {/* 🔷 GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* ================= GRID ================= */}
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
           {services.map((item, i) => (
-            <div
+            <motion.div
               key={i}
-              className="group bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-2xl hover:shadow-blue-100 transition-all duration-300"
+              variants={fadeUp}
+              whileHover={{ y: -6 }}
+              className="
+                group bg-white p-8 rounded-2xl border border-gray-200
+                hover:shadow-2xl hover:shadow-blue-100
+                transition-all duration-300
+              "
             >
               {/* ICON */}
-              <div className="w-14 h-14 mb-6 rounded-xl flex items-center justify-center bg-blue-50 group-hover:bg-blue-600 transition">
-                <span className="text-2xl group-hover:text-white">
+              <div
+                className="
+                w-14 h-14 mb-6 rounded-xl flex items-center justify-center
+                bg-blue-50 group-hover:bg-blue-600
+                transition-all duration-300
+              "
+              >
+                <span className="text-2xl group-hover:text-white transition">
                   {item.icon}
                 </span>
               </div>
@@ -66,13 +94,16 @@ export default function Services() {
               {/* LINK */}
               <Link
                 href={item.href}
-                className="text-blue-600 text-sm font-semibold flex items-center gap-2 group-hover:gap-3 transition-all"
+                className="
+                  text-blue-600 text-sm font-semibold flex items-center gap-2
+                  group-hover:gap-3 transition-all duration-300
+                "
               >
                 Learn More →
               </Link>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
